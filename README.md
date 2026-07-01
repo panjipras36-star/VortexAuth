@@ -1,9 +1,15 @@
-VORTEX // Authentication Credential Breaker
-VORTEX is an authentication testing utility engineered for credential-based security analysis. Developed with a "high-efficiency" philosophy, this tool is designed to provide security operators and researchers with a reliable way to validate login mechanism resilience within controlled environments.
+# VORTEX // Authentication Credential Breaker
 
-Built natively in Python, VORTEX prioritizes performance and precision, making it a dependable asset during authorized security assessment phases. VORTEX delivers actionable, structured intelligence to facilitate in-depth authentication vulnerability analysis.
+**VORTEX** is an authentication testing utility engineered for credential-based security analysis. Developed with a "high-efficiency" philosophy, this tool is designed to provide security operators and researchers with a reliable way to validate login mechanism resilience within controlled environments.
 
-_   _  ____  ____  _____  _  _  ____ 
+Built natively in Python, **VORTEX** prioritizes performance and precision, making it a dependable asset during authorized security assessment phases. **VORTEX** delivers actionable, structured intelligence to facilitate in-depth authentication vulnerability analysis.
+
+---
+
+## 🖥️ Preview
+
+```text
+  _   _  ____  ____  _____  _  _  ____ 
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
   ) _ (  )   / )   / )(_)(  )  (  )__) 
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
@@ -19,8 +25,12 @@ _   _  ____  ____  _____  _  _  ____
 
 vortex-auth >
 
+How to Run
+
 If this is your first time accessing this repository, please clone it to your local machine first:
-git clone https://github.com/panjipras36-star/VortexAuth.git
+Bash
+
+git clone [https://github.com/panjipras36-star/VortexAuth.git](https://github.com/panjipras36-s
 
 Navigate to the project directory:
 cd VortexAuth
