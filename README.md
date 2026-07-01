@@ -25,21 +25,17 @@ Built natively in Python, **VORTEX** prioritizes performance and precision, maki
 
 vortex-auth >
 
-'''
-Clone the repository:
+# VORTEX // Authentication Credential Breaker
 
-'''
-git clone [https://github.com/panjipras36-star/VortexAuth.git](https://github.com/panjipras36-star/VortexAuth.git)
+**VORTEX** is an authentication testing utility engineered for credential-based security analysis.
 
-'''
-Navigate to the project directory:
-'''
-cd VortexAuth
-'''
-Run the tool:
-'''
+## 🚀 Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/panjipras36-star/VortexAuth.git](https://github.com/panjipras36-star/VortexAuth.git)
+   cd VortexAuth
+python3 -m venv venv
+source venv/bin/activate
+pip install requests
 python3 auth_breaker.py
-'
-
-
-
