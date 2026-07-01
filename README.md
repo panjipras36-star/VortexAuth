@@ -8,12 +8,12 @@ Built natively in Python, **VORTEX** prioritizes performance and precision, maki
 
 ## 🖥️ Preview
 
-```text
+```
   _   _  ____  ____  _____  _  _  ____ 
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
   ) _ (  )   / )   / )(_)(  )  (  )__) 
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
- VORTEX v1.1 // BY PRASS
+ VORTEX v1.1 // BY NEUROPRASS
 
 [?] Target Endpoint -> [TARGET_URL]
 
@@ -25,17 +25,25 @@ Built natively in Python, **VORTEX** prioritizes performance and precision, maki
 
 vortex-auth >
 
+```
 How to Run
-
-If this is your first time accessing this repository, please clone it to your local machine first:
-Bash
-
-git clone [https://github.com/panjipras36-star/VortexAuth.git](https://github.com/panjipras36-s
-
+```
+git clone https://github.com/panjipras36-star/VortexAuth.git
+```
 Navigate to the project directory:
+```
 cd VortexAuth
-
+```
 Run the tool:
-python3 auth_breaker.py
+```
+python3 auth_breaker.pyDevelopment Roadmap
+```
 
-Disclaimer: This tool is created for educational purposes and authorized penetration testing only. Any misuse of this tool against unauthorized systems is solely the responsibility of the user.
+VORTEX is currently in active development. We are committed to continuous improvement, and the following features are planned for future updates:
+ ~) Advanced brute-force mitigation bypass.
+ ~) Multi-threaded request handling for increased speed.
+ ~) Integration with proxy chains for better anonymity.
+ ~) Expanded support for different authentication protocols.
+
+ Disclaimer: This tool is created for educational purposes and authorized penetration testing only. Any misuse of this tool against unauthorized systems is solely the responsibility of the user.
+
