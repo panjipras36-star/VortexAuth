@@ -35,8 +35,7 @@ _   _  ____  ____  _____  _  _  ____
 [ CORE MENU ]
 1. Analyze Auth Mechanism
 2. Execute Credential Test
-3. Configure Headers
-4. Terminate Session
+3. Terminate Session
 
 vortex-auth >
 ```
