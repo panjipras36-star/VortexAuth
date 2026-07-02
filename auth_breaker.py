@@ -15,7 +15,7 @@ def print_banner():
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
   VORTEX v1.1 // BY NEUROPRASS
     """
-    print(RED + BLUE + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
+    print(BLUE + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
 
 def analyze_mechanism(url):
     print(f"\n[*] Analyzing: {url}")
