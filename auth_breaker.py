@@ -8,7 +8,6 @@ def print_banner():
     RED = '\033[91m'
     GRN = '\033[92m'
     RST = '\033[0m'
-    # Menambahkan 'r' di depan untuk menghindari SyntaxWarning
     banner = r"""
   _   _   ____  ____  _____  _   _  ____  
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
@@ -65,9 +64,11 @@ def execute_test(target_url, username, password_file):
     while not result.empty():
         res = result.get()
         if res[0] == 200:
-            print(f"[+] 200 OK: {res[1]}")
+            print(f"[+] 200 OK: Authentication Successful!")
+        elif res[0] == 401:
+            print(f"[-] Status 401: Login Failed")
         else:
-            print(f"[-] Status {res[0]}: Login Failed")
+            print(f"[-] Status {res[0]}: Connection Issue")
 
 def main():
     print_banner()
