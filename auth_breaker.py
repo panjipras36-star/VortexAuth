@@ -7,6 +7,7 @@ from queue import Queue
 def print_banner():
     RED = '\033[91m'
     GRN = '\033[92m'
+    BLU = '\033[94m'
     RST = '\033[0m'
     banner = r"""
   _   _   ____  ____  _____  _   _  ____  
@@ -15,7 +16,7 @@ def print_banner():
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
   VORTEX v1.1 // BY NEUROPRASS
     """
-    print(BLUE + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
+    print(BLU + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
 
 def analyze_mechanism(url):
     print(f"\n[*] Analyzing: {url}")
