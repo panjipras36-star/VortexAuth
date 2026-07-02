@@ -24,20 +24,24 @@ Why use VORTEX?
 
    
   ```
-_   _  ____  ____  _____  _  _  ____ 
+_   _   ____  ____  _____  _   _  ____  
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
-  ) _ (  )   / )   / )(_)(  )  (  )__) 
+  ) _ (  )   / )   / )(_)(  )   (  )__) 
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
- VORTEX v1.1 // BY NEUROPRASSSSS
 
-[?] Target Endpoint -> [TARGET_URL]
+  VORTEX v1.1 // BY NEUROPRASSSSS
 
+ [?] Target Endpoint -> [TARGET_URL]
+
+======================================
 [ CORE MENU ]
-1. Analyze Auth Mechanism
-2. Execute Credential Test
-3. Terminate Session
+======================================
 
-vortex-auth >
+ 1. Analyze Auth Mechanism
+ 2. Execute Credential Test
+ 3. Terminate Session
+
+ vortex-auth >
 ```
 ## 🚀 Installation
 
