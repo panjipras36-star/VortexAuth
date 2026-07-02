@@ -40,6 +40,15 @@ _   _   ____  ____  _____  _   _  ____
 
  vortex-auth >
 ```
+### 🚧 Future Development
+VORTEX is an ongoing project. I am committed to continuously improving its capabilities and performance. Planned updates include:
+* **Enhanced Stealth:** Implementing User-Agent rotation and proxy support to avoid detection.
+* **Advanced Reporting:** Exporting scan results into detailed CSV or PDF files.
+* **WAF Evasion:** Adding techniques to bypass basic Web Application Firewalls.
+* **Multi-Protocol Support:** Expanding testing capabilities beyond simple JSON-based HTTP authentication.
+
+*Contributions and suggestions are always welcome!*
+
 ## 🚀 Installation
 
 1. **Clone the repository:**
