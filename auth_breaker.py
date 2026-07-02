@@ -15,12 +15,12 @@ def print_banner():
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
   VORTEX v1.1 // BY NEUROPRASS
     """
-    print(RED + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
+    print(RED + BLUE + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
 
 def analyze_mechanism(url):
     print(f"\n[*] Analyzing: {url}")
     try:
-        response = requests.head(url, timeout=5)
+        response = requests.post(url, json={}, timeout=5)
         print(f"[+] Status Code: {response.status_code}")
         print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
         print("[+] Mechanism: Endpoint responsive. Ready for testing.")
