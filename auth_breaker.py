@@ -8,16 +8,15 @@ def print_banner():
     RED = '\033[91m'
     GRN = '\033[92m'
     RST = '\033[0m'
-    banner = f"""{RED}
+    # Menambahkan 'r' di depan untuk menghindari SyntaxWarning
+    banner = r"""
   _   _   ____  ____  _____  _   _  ____  
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
   ) _ (  )   / )   / )(_)(  )   (  )__) 
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
   VORTEX v1.1 // BY NEUROPRASS
-    {GRN}
- [ Focus: Speed & Power ]
-    {RST}"""
-    print(banner)
+    """
+    print(RED + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
 
 def analyze_mechanism(url):
     print(f"\n[*] Analyzing: {url}")
@@ -76,8 +75,7 @@ def main():
         print("\n[ CORE MENU ]")
         print("1. Analyze Auth Mechanism")
         print("2. Execute Credential Test")
-        print("3. Configure Headers")
-        print("4. Terminate Session")
+        print("3. Terminate Session")
         
         choice = input("\nvortex-auth > ")
         
@@ -89,11 +87,11 @@ def main():
             user = input("[?] Username: ")
             pfile = input("[?] Password Dictionary File: ")
             execute_test(url, user, pfile)
-        elif choice == "4":
+        elif choice == "3":
             print("[*] Session terminated.")
             sys.exit()
         else:
-            print("[!] Feature in development.")
+            print("[!] Invalid option. Please choose 1, 2, or 3.")
 
 if __name__ == "__main__":
     main()
