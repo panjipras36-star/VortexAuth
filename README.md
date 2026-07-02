@@ -5,9 +5,6 @@
   <a href="https://www.kali.org/">
     <img src="https://img.shields.io/badge/Kali_Linux-268BEE?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Kali Linux">
   </a>
-  <a href="https://www.linkedin.com/in/muhamad-panji-prasetya-a36a67346/">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-  </a>
 </p>
 
                                              VORTEXv1.1 // Authentication Credential Breaker
