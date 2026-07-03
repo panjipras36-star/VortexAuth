@@ -23,16 +23,11 @@ def display_banner():
 def analyze_mechanism(url):
     print(f"\n[*] Probing: {url}")
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.post(url, json={"probe": "test"}, timeout=5)
         print(f"[+] Status Code: {response.status_code}")
         print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
-    except Exception:
-        try:
-            response = requests.post(url, json={}, timeout=5)
-            print(f"[+] Fallback POST Status Code: {response.status_code}")
-            print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
-        except Exception as e:
-            print(f"[-] Target unreachable: {e}")
+    except Exception as e:
+        print(f"[-] Target unreachable: {e}")
     input("\n[ Press Enter to return to menu ]")
 
 def send_request(target_api, username, password):
