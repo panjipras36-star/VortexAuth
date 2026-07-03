@@ -18,7 +18,7 @@ def display_banner():
     print("    ╚═══╝   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝")
     print("\n" + " "*28 + "VortexAUTH v1.1 // BY NEUROPRASSSSS")
     print("="*90 + "\033[0m")
-    print("\033[92m [ Focus: Speed & Power ]\033[0m\n")
+    print("\033[32m  [STATUS: ACTIVE] [THREADS: {MAX_THREADS}] [MODE: STEALTH]\033[0m\n")
 
 def analyze_mechanism(url):
     print(f"\n[*] Probing: {url}")
@@ -63,18 +63,24 @@ def execute_test(target_url, username, password_file):
 def main():
     while True:
         display_banner()
-        print("[ CORE MENU ]\n1. Analyze\n2. Run Test\n3. Exit")
-        choice = input("\nvortex-auth > ")
+        print("    ╔══════════════════════════════════════════════════════════╗")
+        print("    ║  [1] ANALYZE          SCAN TARGET ENDPOINT               ║")
+        print("    ║  [2] EXECUTE          RUN CREDENTIAL BRUTEFORCE          ║")
+        print("    ║  [3] EXIT             TERMINATE PROCESS                  ║")
+        print("    ╚══════════════════════════════════════════════════════════╝")
+        
+        choice = input("\n    \033[1;36mroot@vortex:~#\033[0m ")
+        
         if choice == "1":
-            url = input("[?] Target URL: ")
+            url = input("    \033[1;33m[?]\033[0m Target URL: ")
             analyze_mechanism(url)
         elif choice == "2":
-            url = input("[?] URL: ")
-            user = input("[?] User: ")
-            pfile = input("[?] Wordlist: ")
+            url = input("    \033[1;33m[?]\033[0m URL: ")
+            user = input("    \033[1;33m[?]\033[0m User: ")
+            pfile = input("    \033[1;33m[?]\033[0m Wordlist: ")
             execute_test(url, user, pfile)
         elif choice == "3":
-            print("\n[*] Terminating session...")
+            print("\n    \033[31m[*] Terminating session...\033[0m")
             sys.exit()
 
 if __name__ == "__main__":
