@@ -7,7 +7,7 @@
   </a>
 </p>
 
-#VORTEXv1.1 // Authentication Credential Breaker
+# VORTEXv1.1 // Authentication Credential Breaker
 
 
 VORTEX v1.1 is a simple tool built to help you test how strong a login system is against password guessing. It's designed to be super easy to use, so you can focus on learning cybersecurity in a safe and legal way.
