@@ -18,16 +18,21 @@ def display_banner():
     print("    ╚═══╝   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝")
     print("\n" + " "*28 + "VortexAUTH v1.1 // BY NEUROPRASSSSS")
     print("="*90 + "\033[0m")
-    print("\033[32m  [STATUS: ACTIVE] [THREADS: {MAX_THREADS}] [MODE: STEALTH]\033[0m\n")
+    print(f"\033[32m  [STATUS: ACTIVE] [THREADS: {MAX_THREADS}] [MODE: STEALTH]\033[0m\n")
 
 def analyze_mechanism(url):
     print(f"\n[*] Probing: {url}")
     try:
-        response = requests.post(url, json={}, timeout=5)
+        response = requests.get(url, timeout=5)
         print(f"[+] Status Code: {response.status_code}")
         print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
-    except Exception as e:
-        print(f"[-] Target unreachable: {e}")
+    except Exception:
+        try:
+            response = requests.post(url, json={}, timeout=5)
+            print(f"[+] Fallback POST Status Code: {response.status_code}")
+            print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
+        except Exception as e:
+            print(f"[-] Target unreachable: {e}")
     input("\n[ Press Enter to return to menu ]")
 
 def send_request(target_api, username, password):
