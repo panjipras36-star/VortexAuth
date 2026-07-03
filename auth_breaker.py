@@ -1,9 +1,11 @@
 import requests
 import json
 import sys
+import threading
 from concurrent.futures import ThreadPoolExecutor
 
-MAX_THREADS = 10 
+MAX_THREADS = 10
+print_lock = threading.Lock()
 
 def print_banner():
     GRN, BLU, RST = '\033[92m', '\033[94m', '\033[0m'
@@ -31,11 +33,16 @@ def send_request(target_api, username, password):
     payload = json.dumps({"username": username, "password": password})
     try:
         response = requests.post(target_api, headers=headers, data=payload, timeout=5)
-        if response.status_code == 200:
-            print(f"[+] SUCCESS: {username}:{password}")
-            return True
-    except Exception:
-        pass
+        
+        with print_lock:
+            if response.status_code == 200:
+                print(f"\033[92m[+] SUCCESS: {username}:{password}\033[0m")
+                return True
+            else:
+                print(f"\033[91m[-] FAILED: {password} (Status: {response.status_code})\033[0m")
+    except Exception as e:
+        with print_lock:
+            print(f"\033[93m[!] ERROR: {password} -> {e}\033[0m")
     return False
 
 def execute_test(target_url, username, password_file):
