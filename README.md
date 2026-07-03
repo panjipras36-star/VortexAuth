@@ -22,24 +22,22 @@ Why use VORTEX?
 
    
   ```
-_   _   ____  ____  _____  _   _  ____  
- ( )_( )(  _ \(  _ \(  _  )( \( )( ___)
-  ) _ (  )   / )   / )(_)(  )   (  )__) 
- (_) (_)(_)\_)(_)\_)(_____)(_)\_)(____)
+██╗   ██╗ ██████╗ ██████╗ ████████╗███████╗██╗  ██╗ █████╗ ██╗   ██╗████████╗██╗  ██╗
+  ██║   ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝╚██╗██╔╝██╔══██╗██║   ██║╚══██╔══╝██║  ██║
+  ██║   ██║██║   ██║██████╔╝   ██║   █████╗   ╚███╔╝ ███████║██║   ██║   ██║   ███████║
+  ╚██╗ ██╔╝██║   ██║██╔══██╗   ██║   ██╔══╝   ██╔██╗ ██╔══██║██║   ██║   ██║   ██╔══██║
+   ╚████╔╝ ╚██████╔╝██║  ██║   ██║   ███████╗██╔╝ ██╗██║  ██║╚██████╔╝   ██║   ██║  ██║
+    ╚═══╝   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝
 
-  VORTEX v1.1 // BY NEUROPRASSSSS
+                    VortexAUTH v1.1 // BY NEUROPRASSSSS
 
- [?] Target Endpoint -> [TARGET_URL]
+    ╔══════════════════════════════════════════════════════════╗
+    ║  [1] ANALYZE          SCAN TARGET ENDPOINT               ║
+    ║  [2] EXECUTE          RUN CREDENTIAL BRUTEFORCE          ║
+    ║  [3] EXIT             TERMINATE PROCESS                  ║
+    ╚══════════════════════════════════════════════════════════╝
 
-======================================
-[ CORE MENU ]
-======================================
-
- 1. Analyze Auth Mechanism
- 2. Execute Credential Test
- 3. Terminate Session
-
- vortex-auth >
+    root@vortex:~#
 ```
 ### 🚧 Future Development
 VORTEX is an ongoing project. I am committed to continuously improving its capabilities and performance. Planned updates include:
